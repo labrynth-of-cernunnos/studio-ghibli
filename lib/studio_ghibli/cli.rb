@@ -234,7 +234,6 @@ class StudioGhibli::Cli
           film_obj = StudioGhibli::Film.find_by_id(film)
           puts "   #{detail(film_obj.title)}"
        end
-
   end
 
   def species_menu
