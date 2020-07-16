@@ -1,0 +1,60 @@
+require 'spec_helper'
+require 'studio_ghibli/findable'
+
+RSpec.describe Film do
+  it 'test returns true' do
+    expect(true).to eq(false)
+  end
+end
+
+#
+# context 'can create and find menu items' do
+#   it 'starts with 0 objects in empty array' do
+#     expect(StudioGhibli::Film.all).to eq([])
+#   end
+#
+#   it 'populates an array of film hash objects' do
+#     expect(@films[0]).to be_instance_of(Hash)
+#     expect(@films.count).to be(>=20)
+#   end
+#
+#   it 'builds each film with the correct keys' do
+#     binding.pry
+#     expect(@films[0].keys).to include(:id, :title, :description, :director, :producer, :release_date, :rt_score)
+#   end
+# end
+# context 'find menu items' do
+#
+#
+#   xit 'can find by id' do
+#
+#   end
+#   xit 'can find by menu number'
+# end
+
+
+# context 'people'
+# before do
+#   @all_people = @api.fetch('people')
+# end
+#
+# it 'correctly fetches people hash' do
+#   expect(@all_people).to be_a(Hash)
+#   expect(@all_people.count).to eq(20)
+# end
+#
+# it 'has the correct object keys' do
+#   @all_people.keys_at("title", "description","director", "producer","release_date","rt_score","people","species","locations","vehicles","url").all?
+# end
+#
+# it 'correctly fetches locations' do
+#   expect(@api.fetch('locations').count).to eq(24)
+# end
+#
+# it 'correctly fetches species' do
+#   expect(@api.fetch('species').count).to eq(6)
+# end
+#
+# it 'correctly fetches vehicles' do
+#   expect(@api.fetch('vehicles').count).to eq(3)
+# end
