@@ -11,4 +11,16 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  def api_response(obj)
+    StudioGhibli::Api.new.fetch("#{obj}")
+  end
+
+  def single_response(obj)
+    api_response(obj).sample
+  end
+
+  def response_keys(obj)
+    single_response(obj).collect {|k,v|  k.to_sym if v != nil  }
+  end
 end

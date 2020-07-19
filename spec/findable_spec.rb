@@ -11,16 +11,14 @@ RSpec.describe Findable do
       films_hash = StudioGhibli::Film.find_or_create('films')
 
       expect(films_hash[0]).to be_kind_of(Hash)
-      expect(films_hash.count).to be(20)
+      expect(films_hash.count).to be <=(20)
     end
 
     it "sets the hash keys to instance variables" do
-      api_response  = StudioGhibli::Api.new.fetch('films')
-      new_film  = StudioGhibli::Film.new(api_response[5])
-      response_keys = api_response[5].collect {|k,v|  k.to_sym if v != nil  }
-      created_methods = response_keys.select{|key| new_film.respond_to?(key)}
+      new_object = StudioGhibli::Film.new(single_response('films'))
+      matching_methods = response_keys('films').select{|key| new_object.respond_to?(key)}
 
-      expect(created_methods.length).to be(7)
+      expect(matching_methods.length).to be(7)
     end
   end
 
@@ -33,16 +31,14 @@ RSpec.describe Findable do
       people_hash = StudioGhibli::Person.find_or_create('people')
 
       expect(people_hash[0]).to be_kind_of(Hash)
-      expect(people_hash.count).to be(31)
+      expect(people_hash.count).to be <= (31)
     end
 
     it "sets the hash keys to instance variables" do
-      api_response  = StudioGhibli::Api.new.fetch('people')
-      new_film  = StudioGhibli::Person.new(api_response[3])
-      response_keys = api_response[3].collect {|k,v|  k.to_sym if v != nil  }
-      created_methods = response_keys.select{|key| new_film.respond_to?(key)}
+      new_object = StudioGhibli::Person.new(single_response('people'))
+      matching_methods = response_keys('people').select{|key| new_object.respond_to?(key)}
 
-      expect(created_methods.length).to be(8)
+      expect(matching_methods.length).to be(8)
     end
   end
 
@@ -59,12 +55,10 @@ RSpec.describe Findable do
     end
 
     it "sets the hash keys to instance variables" do
-      api_response  = StudioGhibli::Api.new.fetch('locations')
-      new_film  = StudioGhibli::Location.new(api_response[6])
-      response_keys = api_response[6].collect {|k,v|  k.to_sym if v != nil  }
-      created_methods = response_keys.select{|key| new_film.respond_to?(key)}
+      new_object = StudioGhibli::Location.new(single_response('locations'))
+      matching_methods = response_keys('locations').select{|key| new_object.respond_to?(key)}
 
-      expect(created_methods.length).to be(8)
+      expect(matching_methods.length).to be <= (8)
     end
   end
 
@@ -81,12 +75,10 @@ RSpec.describe Findable do
     end
 
     it "sets the hash keys to instance variables" do
-      api_response  = StudioGhibli::Api.new.fetch('species')
-      new_film  = StudioGhibli::Species.new(api_response[4])
-      response_keys = api_response[4].collect {|k,v|  k.to_sym if v != nil  }
-      created_methods = response_keys.select{|key| new_film.respond_to?(key)}
+      new_object = StudioGhibli::Species.new(single_response('species'))
+      matching_methods = response_keys('species').select{|key| new_object.respond_to?(key)}
 
-      expect(created_methods.length).to be(8)
+      expect(matching_methods.length).to be(8)
     end
   end
 
@@ -103,12 +95,10 @@ RSpec.describe Findable do
     end
 
     it "sets the hash keys to instance variables" do
-      api_response  = StudioGhibli::Api.new.fetch('vehicles')
-      new_film  = StudioGhibli::Vehicle.new(api_response[2])
-      response_keys = api_response[2].collect {|k,v|  k.to_sym if v != nil  }
-      created_methods = response_keys.select{|key| new_film.respond_to?(key)}
+      new_object = StudioGhibli::Vehicle.new(single_response('vehicles'))
+      matching_methods = response_keys('vehicles').select{|key| new_object.respond_to?(key)}
 
-      expect(created_methods.length).to be(8)
+      expect(matching_methods.length).to be(8)
     end
   end
 end
